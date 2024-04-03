@@ -2,6 +2,10 @@ from flask import Blueprint
 
 auth = Blueprint('auth', __name__)
 
+#@auth.route('/form_view')
+#def form_view():
+   # return render_template('public/forms/form_view.html')
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('public/forms/login.html')

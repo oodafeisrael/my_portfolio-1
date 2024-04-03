@@ -22,11 +22,6 @@ def add_no_cache(response):
 def index():
     return render_template('public/index.html')
 
-#@bp.route('/form_view')
-#def form_view():
-   # return render_template('public/forms/form_view.html')
-
-
 @bp.route('/about')
 def about():
     return render_template('public/about.html')
