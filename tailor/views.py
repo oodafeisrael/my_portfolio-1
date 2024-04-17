@@ -1,13 +1,16 @@
 from flask import Blueprint
 #from app import app
 
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect, jsonify
 #from forms.forms import RegistrationForm, LoginForm
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError
+#from flask_wtf import FlaskForm
+#from wtforms import StringField, PasswordField, SubmitField
+#from wtforms.validators import InputRequired, Length, ValidationError
+from .models import Order
+from . import db
+import json
 
 bp = Blueprint("views", __name__)
 #app.config['SECRET KEY'] = 'bace1b5adc790cfb9027f100ff9e1478'
@@ -20,7 +23,7 @@ def add_no_cache(response):
 
 @bp.route("/")
 def index():
-    return render_template('public/index.html')
+    return render_template('public/index.html', user=current_user)
 
 @bp.route('/about')
 def about():
@@ -32,7 +35,7 @@ def catalog():
 
 @bp.route('/contact')
 def contact():
-    return render_template('public/contact.html')
+    return render_template('templates/public/contact.html')
 
 @bp.route('/measure')
 def measure():
